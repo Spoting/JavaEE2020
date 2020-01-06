@@ -33,10 +33,7 @@ public class Student {
 	private int activated;
 	@Column(name="ranking")
 	private int ranking;
-//	
-//	@OneToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name="app_id")
-//	private Application application;
+
 	@OneToOne(mappedBy = "createdBy")
 	private Application application;
 	
