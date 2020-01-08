@@ -1,17 +1,16 @@
 package gr.hua.dit.dao;
 import java.util.List;
 
-import gr.hua.dit.entities.Department;
 import gr.hua.dit.entities.Student;
-import gr.hua.dit.entities.User;
 
 public interface StudentDAO {
-	public List<Student> getDepartmentStudents(int depId);
 
-	public void createStudent(User user, int depId);
+	public void saveStudent(Student student);
 	
-	public Student getStudent(String username);
+	public Student getStudent(int id);
 
-	public void deleteStudent(String username);
+	public  List<Student> getStudents();
+	
+	public void deleteStudent(int id);
 	
 }

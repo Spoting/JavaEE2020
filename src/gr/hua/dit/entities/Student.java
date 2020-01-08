@@ -18,20 +18,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "student")
-public class Student {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
-	
-	@Column(name = "first_name")
-	private String firstName;
-	
-	@Column(name = "last_name")
-	private String lastName;
-	
-	@Column(name = "email")
-	private String email;
+public class Student extends User {
 	
 	@Column(name = "activated")
 	private int activated;
@@ -45,19 +32,6 @@ public class Student {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "dept_id")
 	private Department department;
-	
-	public Student() {
-		super();
-	}
-
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 
 	public int getActivated() {
@@ -84,7 +58,21 @@ public class Student {
 		this.application = application;
 	}
 
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [activated=" + activated + ", ranking=" + ranking + ", application=" + application
+				+ ", department=" + department + ", toString()=" + super.toString() + "]";
+	}
+
 	
-	
+
 	
 }

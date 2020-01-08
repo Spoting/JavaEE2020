@@ -4,7 +4,7 @@ import java.util.List;
 import gr.hua.dit.entities.Department;
 
 public interface DepartmentDAO {
-	public void createDepartment(Department department);
+	public void saveDepartment(Department department);
 	
 	public List<Department> getDepartments();
 	
@@ -12,7 +12,4 @@ public interface DepartmentDAO {
 	
 	public void deleteDepartment(int id);
 	
-	public List<Department> getEmployeeDepartments(int empId);
-	
-	public void updateDepartment(int id);
 }

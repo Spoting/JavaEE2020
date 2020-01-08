@@ -33,9 +33,8 @@ public class Application {
 
 	@OneToOne
 	@JoinColumn(name="id")
-	@MapsId
 	private Student createdBy;
-	
+//	@MapsId
 	public Application() {
 		
 	}

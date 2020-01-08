@@ -2,46 +2,72 @@ package gr.hua.dit.dao;
 
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import gr.hua.dit.entities.Department;
 
+@Repository
 public class DepartmentDAOImpl implements DepartmentDAO {
-	
+
+	// inject the session factory
+	@Autowired
+	private SessionFactory sessionFactory;
 
 	@Override
-	public void createDepartment(Department department) {
+	public void saveDepartment(Department department) {
 		// TODO Auto-generated method stub
-		
+		Session currentSession = sessionFactory.getCurrentSession();
+
+		if (department.getId() != 0) {
+			// update the department
+			currentSession.update(department);
+		} else {
+			// save the department
+			currentSession.save(department);
+		}
+
 	}
-	
+
 	@Override
 	public List<Department> getDepartments() {
-		// TODO Auto-generated method stub
-		return null;
+		// get current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+
+		// create a query
+		Query<Department> query = currentSession.createQuery("from Department", Department.class);
+
+		// execute the query and get the results list
+		List<Department> departments = query.getResultList();
+
+		// return the results
+		return departments;
 	}
 
 	@Override
 	public Department getDepartment(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		// get current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
 
-	@Override
-	public List<Department> getEmployeeDepartments(int empId) {
-		// TODO Auto-generated method stub
-		return null;
+		// get and return Student
+		Department department = currentSession.get(Department.class, id);
+		return department;
 	}
 
 	@Override
 	public void deleteDepartment(int id) {
-		// TODO Auto-generated method stub
+		// get current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+
+		// find the student
+		Department department = currentSession.get(Department.class, id);
+
+		// delete student
+		currentSession.delete(department);
 
 	}
-	
-	@Override
-	public void updateDepartment(int id) {
-		// TODO Auto-generated method stub
-
-	}
-
 
 }

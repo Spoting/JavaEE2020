@@ -8,18 +8,24 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
-
+//uniqueConstraints = @UniqueConstraint(
+//columnNames = { "role", "user_id" }))
 
 @Entity
-@Table(name = "authorities")
+@Table(name = "authorities", uniqueConstraints = @UniqueConstraint(columnNames = { "authority", "user_id" }))
 public class Authorities {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "auth_id")
+	private int auth_id;
+
 	@Column(name = "authority")
 	private String authority;
 
 	@ManyToOne
-	@JoinColumn(name = "username")
+	@JoinColumn(name = "user_id")
 	private User user;
 
 	public Authorities() {
@@ -41,7 +47,5 @@ public class Authorities {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-	
 
 }

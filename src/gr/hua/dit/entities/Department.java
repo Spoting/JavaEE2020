@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -29,11 +31,12 @@ public class Department {
 	@Column(name = "beneficaries")
 	private int beneficiaries;
 	
-//	@OneToMany(cascade = CascadeType.ALL)
-//	@JoinColumn(name = "dept_id")
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "department", cascade = { CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH })
 	private List<Student> students;
+	
+//	@ManyToOne(mappedBy = "departments")
+//	private Employee manager;
 	
 	public Department() {
 		
@@ -76,8 +79,6 @@ public class Department {
 		this.students = students;
 	}
 
-	
-//	private Employee manager;
 	
 	
 }
