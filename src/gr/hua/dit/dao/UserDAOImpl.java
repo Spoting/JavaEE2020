@@ -3,6 +3,7 @@ package gr.hua.dit.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -31,6 +32,21 @@ public class UserDAOImpl implements UserDAO {
 		} else {
 			return null;
 		}
+	}
+
+	@Override
+	public void saveAdmin(User user) {
+		Session currentSession = sessionFactory.getCurrentSession();
+
+		if (user.getId() != 0) {
+		// update the student
+			currentSession.update(user);
+		}
+		else {
+			// save the student
+		currentSession.save(user);
+		}
+		
 	}
 
 }

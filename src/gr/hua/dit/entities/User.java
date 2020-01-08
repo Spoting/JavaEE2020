@@ -1,9 +1,7 @@
 package gr.hua.dit.entities;
 
 import java.util.List;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @SuppressWarnings("serial")
@@ -40,9 +40,18 @@ public class User { // implements UserDetails
 	@Column(name = "email")
 	private String email;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-	private List<Authorities> authorities;
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+//	private List<Authorities> authorities;
 
+	@ManyToMany
+    @JoinTable( 
+        name = "users_roles", 
+        joinColumns = @JoinColumn(
+          name = "user_id", referencedColumnName = "id"), 
+        inverseJoinColumns = @JoinColumn(
+          name = "role_id", referencedColumnName = "auth_id")) 
+	private List<Authorities> authorities;
+	
 //	
 //	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
 //	private Set<UserRole> userRoleSet;

@@ -18,7 +18,7 @@ import javax.persistence.Table;
 public class Employee extends User {
 	
 	@Column(name = "is_chief")
-	private int isChief;
+	private boolean isChief;
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "manager_id")
@@ -36,13 +36,20 @@ public class Employee extends User {
 		this.departments = departments;
 	}
 
-	public int getIsChief() {
+	public boolean isChief() {
 		return isChief;
 	}
 
-	public void setIsChief(int isChief) {
+	public void setChief(boolean isChief) {
 		this.isChief = isChief;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Employee [isChief=" + isChief + ", departments=" + departments + ", toString()=" + super.toString()
+				+ "]";
+	}
+
+
 	
 }
