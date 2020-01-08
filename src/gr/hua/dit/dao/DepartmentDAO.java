@@ -1,7 +1,7 @@
 package gr.hua.dit.dao;
 import java.util.List;
 
-import gr.hua.dit.entities.Department;;
+import gr.hua.dit.entities.Department;
 
 public interface DepartmentDAO {
 	public void createDepartment(Department department);

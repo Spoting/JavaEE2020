@@ -14,6 +14,9 @@
                 http://www.springframework.org/schema/tx
                 http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+	<!-- Properties File for DB -->
+	<context:property-placeholder location="classpath:application.properties"/>
+	
 	<!-- Add support for component scanning -->
 	<context:component-scan
 		base-package="gr.hua.dit" />
@@ -21,6 +24,8 @@
 	<!-- Add support for conversion, formatting and validation support -->
 	<mvc:annotation-driven />
 
+	<mvc:view-controller path="/login" view-name="login"/>
+	
 	<!-- Define Spring MVC view resolver -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -34,9 +39,9 @@
 		destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
 		<property name="jdbcUrl"
-			value="jdbc:mysql://127.0.0.1:3306/huaDit?createDatabaseIfNotExist=true" />
-		<property name="user" value="root" />
-		<property name="password" value="spot" />
+			value="${jdbc.url}"/>
+		<property name="user" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
 				 
 		<!-- these are connection pool properties for C3P0 -->
 		<property name="initialPoolSize" value="5" />
