@@ -4,15 +4,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>BORAJI.COM</title>
 </head>
 <body>
-	<h1>Spring MVC 5 + Spring Security 5 + Hibernate 5 example</h1>
+	<h1>Lalalal</h1>
 	<h2>${welcomemessage}</h2>
 	<h2>${roles}</h2>
 
 	 <a href="<c:url value="/logout" />">Logout</a>
 </body>
-
-
 </html>

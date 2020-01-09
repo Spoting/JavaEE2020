@@ -29,14 +29,37 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
-
+//  Old Working
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/login")
 				.loginProcessingUrl("/loginAction").permitAll().and().logout().logoutSuccessUrl("/login").permitAll()
 				.and().csrf().disable();
 	}
-
+//
+//	 	@Override
+//	    protected void configure(HttpSecurity http) throws Exception {
+//	        http.authorizeRequests()
+//	        .antMatchers("/login")
+//	            .permitAll()
+//	        .antMatchers("/**")
+//	            .hasAnyRole("ROLE_ADMIN", "ROLE_EMP", "ROLE_CHIEF")
+//	        .and()
+//	            .formLogin()
+//	            .loginPage("/login")
+//	            .defaultSuccessUrl("/home")
+//	            .failureUrl("/login?error=true")
+//	            .permitAll()
+//	        .and()
+//	            .logout()
+//	            .logoutSuccessUrl("/login?logout=true")
+//	            .invalidateHttpSession(true)
+//	            .permitAll()
+//	        .and()
+//	            .csrf()
+//	            .disable();
+//	    }
+	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/resources/**");

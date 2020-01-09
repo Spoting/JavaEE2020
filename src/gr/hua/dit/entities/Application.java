@@ -19,6 +19,8 @@ import javax.persistence.Table;
 public class Application {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
 	@Column(name = "creation_date")
 	private LocalDateTime creationDate;
@@ -31,8 +33,9 @@ public class Application {
 	@JoinColumn(name="form_id")
 	private Form applicationForm;
 
-	@OneToOne
-	@JoinColumn(name="id")
+
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="stud_id")
 	private Student createdBy;
 //	@MapsId
 	public Application() {
@@ -84,6 +87,12 @@ public class Application {
 	}
 	public void setApplicationForm(Form applicationForm) {
 		this.applicationForm = applicationForm;
+	}
+
+	@Override
+	public String toString() {
+		return "Application [id=" + id + ", creationDate=" + creationDate + ", approved=" + approved + ", points="
+				+ points + ", applicationForm=" + applicationForm + ", createdBy=" + createdBy + "]";
 	}
 	
 	

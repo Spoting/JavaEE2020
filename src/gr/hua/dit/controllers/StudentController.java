@@ -1,50 +1,50 @@
-//package gr.hua.dit.controllers;
-//
-//import java.util.List;
-//
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Controller;
-//import org.springframework.ui.Model;
-//import org.springframework.web.bind.annotation.ModelAttribute;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RequestMethod;
-//import org.springframework.web.bind.annotation.RequestParam;
-//
-//import gr.hua.dit.dao.StudentDAO;
-//import gr.hua.dit.entities.Student;
-//import gr.hua.dit.entities.User;
-//
-//@Controller
-//@RequestMapping("/student")
-//public class StudentController {
-//
-//	@Autowired
-//	private StudentDAO studentDAO;
-////
-////	@RequestMapping("/list")
-////	public String listStudents(Model model) {
-////		// get customers from dao
-////		List<Student> students = studentDAO.getStudents();
-////
-////		// add the customers to the model
-////		model.addAttribute("students", students);
-////		
-////		System.out.println(students.get(0).getApplication().getApplicationForm().getAnnualIncome());
-////		return "list-students";
-////	}
-//
-//	@RequestMapping(value = "/saveStudent", method = RequestMethod.POST)
-//	public String saveStudent(@ModelAttribute("student") User user, @RequestParam("department") int depId) {
-////		System.out.println(user.getFirstName());
-////		System.out.println(depId);
-////		// get customers from dao
-//////		Student s = new Student();
-//////		s.setActivated(1);
-//////		studentDAO.saveStudent(s);
-////
-////		// add the customers to the model
-//////        model.addAttribute("student", students);
-//
-//		return "redirect:/customer/list-students";
-//	}
-//}
+package gr.hua.dit.controllers;
+
+import java.util.Locale;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import gr.hua.dit.dao.StudentDAO;
+import gr.hua.dit.entities.Student;
+
+@Controller
+@RequestMapping("/student")
+public class StudentController {
+
+	@Autowired
+	private StudentDAO studentDAO;
+
+	@GetMapping("/list")
+	@Transactional
+	public String userForm(Locale locale, Model model) {
+		model.addAttribute("users", studentDAO.getStudents());
+		return "editUsers";
+	}
+
+	@ModelAttribute("user")
+	public Student formBackingObject() {
+		return new Student();
+	}
+
+	@PostMapping("/addUser")
+	public String saveUser(@ModelAttribute("user") Student user, BindingResult result, Model model) {
+
+		if (result.hasErrors()) {
+			model.addAttribute("users", studentDAO.getStudents());
+			return "editUsers";
+		}
+
+		studentDAO.saveStudent(user);
+		return "redirect:/";
+	}
+
+}

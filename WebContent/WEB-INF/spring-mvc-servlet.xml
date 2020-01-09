@@ -21,10 +21,12 @@
 	<context:component-scan
 		base-package="gr.hua.dit" />
 
+	<mvc:view-controller path="/login" view-name="login"/>
+
 	<!-- Add support for conversion, formatting and validation support -->
 	<mvc:annotation-driven />
 
-	<mvc:view-controller path="/login" view-name="login"/>
+
 	
 	<!-- Define Spring MVC view resolver -->
 	<bean
@@ -58,7 +60,7 @@
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
-				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.show_sql">false</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop> 
 				<prop key="hibernate.connection.CharSet">utf8</prop>
                 <prop key="hibernate.connection.characterEncoding">utf8</prop>

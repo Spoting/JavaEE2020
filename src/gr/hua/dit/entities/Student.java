@@ -21,24 +21,23 @@ import javax.persistence.Table;
 public class Student extends User {
 	
 	@Column(name = "activated")
-	private int activated;
+	private boolean activated;
 	
 	@Column(name="ranking")
 	private int ranking;
 
-	@OneToOne(mappedBy = "createdBy")
+	@OneToOne(mappedBy = "createdBy", cascade = CascadeType.ALL)
 	private Application application;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "dept_id")
 	private Department department;
 
-
-	public int getActivated() {
+	public boolean isActivated() {
 		return activated;
 	}
 
-	public void setActivated(int activated) {
+	public void setActivated(boolean activated) {
 		this.activated = activated;
 	}
 
@@ -71,8 +70,6 @@ public class Student extends User {
 		return "Student [activated=" + activated + ", ranking=" + ranking + ", application=" + application
 				+ ", department=" + department + ", toString()=" + super.toString() + "]";
 	}
-
-	
 
 	
 }

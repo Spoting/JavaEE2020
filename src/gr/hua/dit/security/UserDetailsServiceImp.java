@@ -37,9 +37,6 @@ public class UserDetailsServiceImp implements UserDetailsService {
 			builder.password(user.getPassword());
 			String[] authorities = user.getAuthorities().stream().map(a -> a.getAuthority()).toArray(String[]::new);
 			
-			System.out.println(authorities[0]);
-//			System.out.println(authorities[1]);
-			
 			builder.authorities(authorities);
 		} else {
 			throw new UsernameNotFoundException("User not found.");

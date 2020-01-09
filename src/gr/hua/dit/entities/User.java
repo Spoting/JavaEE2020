@@ -37,8 +37,6 @@ public class User { // implements UserDetails
 	private String firstName;
 	@Column(name = "last_name")
 	private String lastName;
-	@Column(name = "email")
-	private String email;
 
 //	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 //	private List<Authorities> authorities;
@@ -88,14 +86,6 @@ public class User { // implements UserDetails
 		this.lastName = lastName;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	public int getId() {
 		return id;
 	}
@@ -123,7 +113,7 @@ public class User { // implements UserDetails
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", enabled=" + enabled + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", email=" + email + ", authorities=" + authorities + "]";
+				+ ", lastName=" + lastName + ", authorities=" + authorities + "]";
 	}
 
 

@@ -13,4 +13,6 @@ public interface StudentDAO {
 	
 	public void deleteStudent(int id);
 	
+	public List<Student> getUnactiveStudentsOfDepartement(int depId);
+	
 }

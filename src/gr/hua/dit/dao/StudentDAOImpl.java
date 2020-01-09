@@ -3,6 +3,7 @@ package gr.hua.dit.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -73,18 +74,21 @@ public class StudentDAOImpl implements StudentDAO {
 		currentSession.delete(student);
 
 	}
+	
+	//This will be used for Getting not_activated Students of the Employee's Department
+	@Override
+	public List<Student> getUnactiveStudentsOfDepartement(int depId) {
+		Session currentSession = sessionFactory.getCurrentSession();
 
-//	@Override
-//	public List<Student> getCourseStudents(int courseId) {
-//	Session currentSession = sessionFactory.getCurrentSession();
-//		
-//		Course course = (Course) currentSession.createQuery("from  Course where id = " +courseId).getSingleResult();
-//		System.out.println("course " + course);
-//
-//		System.out.println("course students " + course.getStudents());
-//
-//		return course.getStudents();
-//	}
+		Department dep = (Department) currentSession.createQuery("from Department where id=" + depId).getSingleResult();
+		
+		@SuppressWarnings("unchecked")
+		Query<Student> query = currentSession.createQuery("from Student s where s.department=:dep and s.activated=0").setParameter("dep", dep);
 
+		// execute the query and get the results list
+		List<Student> students = query.getResultList();
+		
+		return students;
+	}
 
 }
