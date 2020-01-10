@@ -53,11 +53,9 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		Session currentSession = sessionFactory.getCurrentSession();
 		if (alreadySetup) {
-//			Student s1 = studentDAO.getStudent(13);
-//			System.out.println(s1.getLastName());
-			
-			Application ap1 = applicationDAO.getApplication(1);
-			System.out.println(ap1.getCreatedBy().getFirstName());
+
+			System.out.println("Already Setted Up");
+
 			return;
 		} else {
 			/////// Departments
@@ -310,7 +308,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
 			studentDAO.saveStudent(s10);
 			
 
-		
+			System.out.println("Done Settin Up!!!");
 
 		}
 

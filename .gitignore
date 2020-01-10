@@ -9,5 +9,4 @@ target/
 .project
 
 #application properties
-*.properties
 .tern-project

@@ -32,12 +32,12 @@ public class LoginController {
 	private UserDAO userDao;
 
 	//Testing
-	@Autowired
-	private StudentDAO studentDAO;
-	@Autowired
-	private ApplicationDAO applicationDAO;
-	@Autowired
-	private DepartmentDAO departmentDAO;
+//	@Autowired
+//	private StudentDAO studentDAO;
+//	@Autowired
+//	private ApplicationDAO applicationDAO;
+//	@Autowired
+//	private DepartmentDAO departmentDAO;
 	////
 	@GetMapping("/")
 	@Transactional
@@ -50,21 +50,21 @@ public class LoginController {
 		/////////////////////////////////////////////////////////////////////
 		//TESTING
 		//getUnactiveStudentsOfDepartement
-		List<Student> students = studentDAO.getUnactiveStudentsOfDepartement(1);
-		for (Student s : students) {
-			System.out.println(s.getFirstName() + " " + s.getLastName());
-		}
-		//getUnapprovedApplications
-		List<Application> apps = applicationDAO.getUnapprovedApplications();
-		for (Application a : apps) {
-			System.out.println("<Application> CreatedBy: " + a.getCreatedBy().getUsername() + " with form:" + a.getApplicationForm());
-		}
-		
+//		List<Student> students = studentDAO.getUnactiveStudentsOfDepartement(1);
+//		for (Student s : students) {
+//			System.out.println(s.getFirstName() + " " + s.getLastName());
+//		}
+//		//getUnapprovedApplications
+//		List<Application> apps = applicationDAO.getUnapprovedApplications();
+//		for (Application a : apps) {
+//			System.out.println("<Application> CreatedBy: " + a.getCreatedBy().getUsername() + " with form:" + a.getApplicationForm());
+//		}
+//		
 		//approveApplication
 //		applicationDAO.approveApplication(apps.get(0));
 		
-		//updateBeneficiariesOfDepartments
-		departmentDAO.updateDepartmentsBeneficiaries();
+		//updateBeneficiariesOfDepartment
+//		departmentDAO.updateDepartmentsBeneficiaries();
 		//TESSSSTIIING
 ///////////////////////////////////////////////////////////////////
 		
@@ -73,11 +73,11 @@ public class LoginController {
 		model.addAttribute("roles", "Your Role: " + role);
 		
 		if (role.equals("ROLE_ADMIN")) {
-			return "index2";
+			return "index3"; //na ftiaxw jsp index3
 		} else if (role.equals("ROLE_CHIEF")){ 
-			return "index2";
+			return "finaletoChief"; //deftero
 		} else if (role.equals("ROLE_EMP")) {
-			return "index";
+			return "finaletoEmployee"; //prwto
 		}
 		return null;
 	}
