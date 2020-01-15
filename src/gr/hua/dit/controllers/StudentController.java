@@ -80,9 +80,9 @@ public class StudentController {
 		List<Application> unapprovedApps = applicationDAO.getUnapprovedApplications();
 		
 		//TODO:Svista auta prin mou steileis ta arxeia kai genika ola ta TODO kolopaido
-//		System.out.println("Stoixeia Application tou Student" +unapprovedApps.get(0).getApplicationForm().getAnnualIncome());
-//		System.out.println("Dimiourgi8ike apton " +unapprovedApps.get(0).getCreatedBy().getUsername());
-		
+		System.out.println("Stoixeia Application tou Student" +unapprovedApps.get(0).getApplicationForm().getAnnualIncome());
+		System.out.println("Dimiourgi8ike apton " +unapprovedApps.get(0).getCreatedBy().getUsername());
+
 		model.addAttribute("applications", unapprovedApps);
 		return "finaletoEmpAppr";
 	}

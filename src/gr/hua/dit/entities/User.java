@@ -14,6 +14,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @SuppressWarnings("serial")
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -41,6 +43,7 @@ public class User { // implements UserDetails
 //	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 //	private List<Authorities> authorities;
 
+	@JsonIgnore
 	@ManyToMany
     @JoinTable( 
         name = "users_roles", 
