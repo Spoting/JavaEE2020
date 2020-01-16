@@ -175,6 +175,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
 			s1.setPassword(studPass);
 			s1.setFirstName("Μάκης");
 			s1.setLastName("Κάτι1");
+			s1.setPhone("changeInfo!");
 			s1.setActivated(false);
 			s1.setDepartment(d1);
 			studentDAO.saveStudent(s1);
@@ -186,6 +187,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
 			s2.setPassword(studPass);
 			s2.setFirstName("Λάκης");
 			s2.setLastName("Κάτι2");
+			s2.setPhone("changeInfo!");
 			s2.setActivated(false);
 			s2.setDepartment(d1);
 			studentDAO.saveStudent(s2);
@@ -195,6 +197,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
 			s3.setEnabled(true);
 			s3.setUsername("it2133");
 			s3.setPassword(studPass);
+			s3.setPhone("changeInfo!");
 			s3.setFirstName("Τάκης");
 			s3.setLastName("Κάτι3");
 			s3.setActivated(false);
@@ -208,16 +211,30 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
 			s4.setPassword(studPass);
 			s4.setFirstName("Άκης");
 			s4.setLastName("Κάτι4");
+			s4.setPhone("changeInfo!");
 			s4.setActivated(false);
 			s4.setDepartment(d1);
 			studentDAO.saveStudent(s4);
 
+			Student s11 = new Student();
+			s11.setAuthorities(stu_auths);
+			s11.setEnabled(true);
+			s11.setUsername("it21311");
+			s11.setPassword(studPass);
+			s11.setPhone("changeInfo!");
+			s11.setFirstName("Χάρης");
+			s11.setLastName("Κάτι11");
+			s11.setActivated(false);
+			s11.setDepartment(d1);
+			studentDAO.saveStudent(s11);
+			
 			Student s5 = new Student();
 			s5.setAuthorities(stu_auths);
 			s5.setEnabled(true);
 			s5.setUsername("it2135");
 			s5.setPassword(studPass);
 			s5.setFirstName("Γεώργιος");
+			s5.setPhone("changeInfo!");
 			s5.setLastName("Κάτι5");
 			s5.setActivated(false);
 			s5.setDepartment(d2);
@@ -227,6 +244,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
 			s6.setAuthorities(stu_auths);
 			s6.setEnabled(true);
 			s6.setUsername("it2136");
+			s6.setPhone("changeInfo!");
 			s6.setPassword(studPass);
 			s6.setFirstName("Αποστόλης");
 			s6.setLastName("Κάτι6");
@@ -240,6 +258,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
 			s7.setUsername("it2137");
 			s7.setPassword(studPass);
 			s7.setFirstName("Χρήστος");
+			s7.setPhone("changeInfo!");
 			s7.setLastName("Κάτι7");
 			s7.setActivated(false);
 			s7.setDepartment(d3);
@@ -276,6 +295,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
 			s9.setPassword(studPass);
 			s9.setFirstName("Νίκος");
 			s9.setLastName("Κάτι9");
+			s9.setPhone("changeInfo!");
 			s9.setActivated(true);
 			s9.setDepartment(d4);
 			s9.setApplication(ap1);
@@ -300,6 +320,7 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
 			s10.setUsername("it21310");
 			s10.setPassword(studPass);
 			s10.setFirstName("Βαγγέλης");
+			s10.setPhone("changeInfo!");
 			s10.setLastName("Κάτι10");
 			s10.setActivated(true);
 			s10.setDepartment(d4);
